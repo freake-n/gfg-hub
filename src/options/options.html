@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GFG Hub Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="../assets/icons/icon48.png" alt="" />
+      <h1>GFG Hub Settings</h1>
+    </header>
+
+    <section class="card">
+      <h2>Sync behavior</h2>
+
+      <label class="toggle-row">
+        <span>Auto-commit accepted solutions</span>
+        <input type="checkbox" id="auto-commit" />
+      </label>
+
+      <label class="toggle-row">
+        <span>Auto-generate README.md per problem</span>
+        <input type="checkbox" id="auto-readme" />
+      </label>
+
+      <label class="field-row">
+        <span>Branch</span>
+        <input type="text" id="branch" placeholder="(default branch)" />
+      </label>
+
+      <label class="field-row">
+        <span>Repository visibility for new repos</span>
+        <select id="visibility">
+          <option value="private">Private</option>
+          <option value="public">Public</option>
+        </select>
+      </label>
+
+      <label class="field-row">
+        <span>Theme</span>
+        <select id="theme">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>Account</h2>
+      <p id="account-summary" class="muted">Not connected.</p>
+      <button id="logout-btn" class="danger-btn">Log out of GitHub</button>
+    </section>
+
+    <button id="save-btn" class="primary-btn">Save settings</button>
+    <p id="save-confirm" class="confirm hidden">Saved ✓</p>
+  </div>
+
+  <script src="options.js" type="module"></script>
+</body>
+</html>

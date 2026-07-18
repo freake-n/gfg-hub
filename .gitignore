@@ -1,0 +1,7 @@
+node_modules/
+*.zip
+.DS_Store
+
+# Ignore real secrets
+env.js
+.env

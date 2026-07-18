@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GFG Hub</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="../assets/icons/icon48.png" alt="" class="logo" />
+    <div>
+      <h1>GFG Hub</h1>
+      <p class="tagline">Auto-sync GeeksforGeeks → GitHub</p>
+    </div>
+  </header>
+
+  <!-- STEP 1: Not authenticated yet — OAuth sign-in card -->
+  <section id="view-connect" class="view hidden">
+    <div class="auth-card">
+      <svg class="gh-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M49 0a49 49 0 0 0-15.5 95.5c2.5.5 3.4-1 3.4-2.3v-8c-13.7 3-16.6-6.6-16.6-6.6-2.2-5.7-5.4-7.2-5.4-7.2-4.5-3 .3-3 .3-3 5 .4 7.6 5 7.6 5 4.4 7.6 11.6 5.4 14.4 4.1.4-3.2 1.7-5.4 3.2-6.6-10.9-1.3-22.4-5.5-22.4-24.4 0-5.4 1.9-9.8 5-13.2-.5-1.3-2.2-6.3.5-13 0 0 4.1-1.3 13.4 5a46.4 46.4 0 0 1 24.4 0c9.3-6.3 13.4-5 13.4-5 2.7 6.7 1 11.7.5 13 3.1 3.4 5 7.8 5 13.2 0 19-11.5 23.1-22.4 24.3 1.8 1.5 3.3 4.5 3.3 9v13.4c0 1.3.9 2.8 3.4 2.3A49 49 0 0 0 49 0z"
+          fill="currentColor" />
+      </svg>
+      <h2 class="auth-title">Connect to GitHub</h2>
+      <p class="auth-desc">
+        Authorize GFG Hub to push your accepted solutions to a private GitHub repository — free, secure, and fully local.
+      </p>
+      <button id="oauth-btn" class="oauth-btn">
+        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M49 0a49 49 0 0 0-15.5 95.5c2.5.5 3.4-1 3.4-2.3v-8c-13.7 3-16.6-6.6-16.6-6.6-2.2-5.7-5.4-7.2-5.4-7.2-4.5-3 .3-3 .3-3 5 .4 7.6 5 7.6 5 4.4 7.6 11.6 5.4 14.4 4.1.4-3.2 1.7-5.4 3.2-6.6-10.9-1.3-22.4-5.5-22.4-24.4 0-5.4 1.9-9.8 5-13.2-.5-1.3-2.2-6.3.5-13 0 0 4.1-1.3 13.4 5a46.4 46.4 0 0 1 24.4 0c9.3-6.3 13.4-5 13.4-5 2.7 6.7 1 11.7.5 13 3.1 3.4 5 7.8 5 13.2 0 19-11.5 23.1-22.4 24.3 1.8 1.5 3.3 4.5 3.3 9v13.4c0 1.3.9 2.8 3.4 2.3A49 49 0 0 0 49 0z"
+            fill="currentColor" />
+        </svg>
+        <span id="oauth-btn-text">Authorize with GitHub</span>
+        <span id="oauth-spinner" class="spinner hidden"></span>
+      </button>
+      <p id="oauth-error" class="error hidden"></p>
+      <p class="auth-note">
+        No data ever leaves your browser except commits directly to your own GitHub repo.
+      </p>
+    </div>
+  </section>
+
+  <!-- STEP 2: Authenticated, pick / create a repo -->
+  <section id="view-repo" class="view hidden">
+    <div class="account-row">
+      <img id="avatar" src="" alt="" class="avatar" />
+      <span id="login-name"></span>
+      <button id="logout-btn" class="link-btn">Log out</button>
+    </div>
+
+    <div class="tabs">
+      <button id="tab-existing" class="tab active">Use existing repo</button>
+      <button id="tab-new" class="tab">Create new repo</button>
+    </div>
+
+    <div id="panel-existing" class="tab-panel">
+      <select id="repo-select"></select>
+      <button id="select-repo-btn" class="primary-btn">Connect this repo</button>
+    </div>
+
+    <div id="panel-new" class="tab-panel hidden">
+      <input type="text" id="new-repo-name" placeholder="GFG-Hub" />
+      <button id="create-repo-btn" class="primary-btn">Create private repo</button>
+    </div>
+    <p id="repo-error" class="error hidden"></p>
+  </section>
+
+  <!-- STEP 3: Fully configured — show live status -->
+  <section id="view-status" class="view hidden">
+    <div class="account-row">
+      <img id="avatar-2" src="" alt="" class="avatar" />
+      <span id="login-name-2"></span>
+      <button id="logout-btn-2" class="link-btn">Log out</button>
+    </div>
+
+    <div class="status-card">
+      <div class="status-row"><span class="label">Repository</span><span id="repo-name-display"></span></div>
+      <div class="status-row"><span class="label">Branch</span><span id="branch-display"></span></div>
+      <div class="status-row"><span class="label">Synced problems</span><span id="sync-count-display">0</span></div>
+      <div class="status-row"><span class="label">Last synced</span><span id="last-sync-display">—</span></div>
+    </div>
+
+    <div class="footer-actions">
+      <button id="open-repo-btn" class="secondary-btn">Open repo</button>
+      <button id="open-options-btn" class="secondary-btn">Settings</button>
+    </div>
+  </section>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
