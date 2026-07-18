@@ -1,12 +1,17 @@
 <div align="center">
-  <img src="assets/banner.png" alt="GFG Hub Banner" width="100%" style="border-radius: 8px; margin-bottom: 20px;" />
-  <br/>
-  <img src="assets/logo.png" alt="GFG Hub Logo" width="120" style="border-radius: 50%;" />
-  <h1>GFG Hub</h1>
-  <p><b>Automatically sync your accepted GeeksforGeeks submissions to GitHub.</b></p>
-  
-  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-  [![Chrome Web Store](https://img.shields.io/badge/Chrome-Extension-green.svg)](#)
+
+<img src="assets/banner.png" width="100%">
+
+<br><br>
+
+<img src="assets/logo.png" width="260">
+
+
+**Automatically sync your accepted GeeksforGeeks submissions to GitHub.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-green.svg)](#)
+
 </div>
 
 ---
